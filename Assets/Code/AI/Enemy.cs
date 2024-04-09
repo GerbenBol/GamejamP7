@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
 
     private Transform player;
     private NavMeshAgent agent;
+    private bool quitting = false;
     private readonly List<string> upgrades = new()
     {
         "SplitShot", "Heal",
@@ -31,7 +32,16 @@ public class Enemy : MonoBehaviour
     private void OnDestroy()
     {
         int rand = Random.Range(0, 20);
-        GameObject gO = Instantiate(pickup);
-        gO.name = upgrades[rand];
+
+        if (!quitting && rand < upgrades.Count)
+        {
+            GameObject gO = Instantiate(pickup);
+            gO.name = upgrades[rand];
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        quitting = true;
     }
 }
