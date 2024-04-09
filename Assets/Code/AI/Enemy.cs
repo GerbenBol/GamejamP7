@@ -5,8 +5,17 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private GameObject pickup;
+
     private Transform player;
     private NavMeshAgent agent;
+    private readonly List<string> upgrades = new()
+    {
+        "SplitShot", "Heal",
+        "BanzaiBill", "Speed",
+        "Ricochet", "Rapidfire",
+        "None"
+    };
 
     private void Start()
     {
@@ -17,5 +26,12 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         agent.SetDestination(player.position);
+    }
+
+    private void OnDestroy()
+    {
+        int rand = Random.Range(0, 20);
+        GameObject gO = Instantiate(pickup);
+        gO.name = upgrades[rand];
     }
 }
