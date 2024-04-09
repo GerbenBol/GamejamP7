@@ -14,8 +14,7 @@ public class Enemy : MonoBehaviour
     {
         "SplitShot", "Heal",
         "BanzaiBill", "Speed",
-        "Ricochet", "Rapidfire",
-        "None"
+        "Ricochet", "Rapidfire"
     };
 
     private void Start()
