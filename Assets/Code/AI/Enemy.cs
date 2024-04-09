@@ -5,13 +5,13 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private Transform player;
-
+    private Transform player;
     private NavMeshAgent agent;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        player = GameObject.Find("Player").GetComponent<Transform>();
     }
 
     private void Update()
