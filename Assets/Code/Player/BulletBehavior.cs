@@ -11,7 +11,7 @@ public class BulletBehavior : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        _rb.AddForce(Vector3.forward * _bulletSpeed);
+        _rb.AddRelativeForce(Vector3.forward * _bulletSpeed);
     }
     void Update()
     {
