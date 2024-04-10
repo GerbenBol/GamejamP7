@@ -13,7 +13,7 @@ public class PlayerShooting : MonoBehaviour
     private float _spawnCoolDown;
 
     private bool _RapidFire;
-    private float _RapifFireMultiplier;
+    private float _RapidFireMultiplier;
 
     void Start()
     {
@@ -29,9 +29,21 @@ public class PlayerShooting : MonoBehaviour
         {
             Instantiate(_Bullet, _BulletSpawn.transform.position, transform.rotation);
             if (_RapidFire)
-                _spawnCoolDown = 1 / (_fireRate * _RapifFireMultiplier);
+                _spawnCoolDown = 1 / (_fireRate * _RapidFireMultiplier);
             else
                 _spawnCoolDown = 1 / _fireRate;
         }
+    }
+
+    public IEnumerator SplitShot()
+    {
+
+    }
+
+    public IEnumerator Rapidfire()
+    {
+        _RapidFire = true;
+        yield return new WaitForSeconds(5);
+        _RapidFire = false;
     }
 }
