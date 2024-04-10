@@ -6,6 +6,7 @@ public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] private GameObject _Bullet;
     [SerializeField] private GameObject _BulletSpawn;
+    [SerializeField] private GameObject _BanzaiBulletSpawn;
 
     private Quaternion _bulletRotation;
 
@@ -13,8 +14,10 @@ public class PlayerShooting : MonoBehaviour
     private float _spawnCoolDown;
 
     private bool _Lifesteal;
-    private bool _Ricochet;
+    private bool _Pierce;
     private bool _SplitShot;
+    private bool _banzaiReady;
+    private bool _banzaiUse;
 
     private bool _RapidFire;
     private float _RapidFireMultiplier;
@@ -28,11 +31,24 @@ public class PlayerShooting : MonoBehaviour
     {
         _spawnCoolDown -= Time.deltaTime;
 
+        if (Input.GetMouseButtonDown(0) && _banzaiReady)
+        {
+            _banzaiReady = false;
+            _banzaiUse = true;
+        }
+
         // instantiates bullet with cooldown depending on fire rate.
         if (_spawnCoolDown <= 0)
         {
-            GameObject bullet = Instantiate(_Bullet, _BulletSpawn.transform.position, transform.rotation);
-            bullet.GetComponent<BulletBehavior>().ricochet = _Ricochet;
+            if (_banzaiUse)
+            {
+                GameObject bullet = Instantiate(_Bullet, _BanzaiBulletSpawn.transform.position, transform.rotation);
+            }
+            else
+            {
+                GameObject bullet = Instantiate(_Bullet, _BulletSpawn.transform.position, transform.rotation);
+                bullet.GetComponent<BulletBehavior>().piercing = _Pierce;
+            }
 
             if (_RapidFire)
                 _spawnCoolDown = 1 / (_fireRate * _RapidFireMultiplier);
@@ -50,14 +66,14 @@ public class PlayerShooting : MonoBehaviour
 
     public void BanzaiBill()
     {
-
+        _banzaiReady = true;
     }
 
-    public IEnumerator Ricochet()
+    public IEnumerator Pierce()
     {
-        _Ricochet = true;
+        _Pierce = true;
         yield return new WaitForSeconds(5);
-        _Ricochet = false;
+        _Pierce = false;
     }
 
     public IEnumerator Rapidfire()

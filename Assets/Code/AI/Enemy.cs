@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     {
         "SplitShot", "Heal",
         "BanzaiBill", "Speed",
-        "Ricochet", "Rapidfire",
+        "Piercing", "Rapidfire",
         "Lifesteal"
     };
 

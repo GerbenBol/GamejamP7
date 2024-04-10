@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerUpgrades : MonoBehaviour
@@ -23,7 +21,7 @@ public class PlayerUpgrades : MonoBehaviour
             case "Heal": Heal(); break;
             case "BanzaiBill": BanzaiBill(); break;
             case "Speed": Speed(); break;
-            case "Ricochet": Ricochet(); break;
+            case "Piercing": Piercing(); break;
             case "Rapidfire": RapidFire(); break;
             case "Lifesteal": Lifesteal(); break;
         }
@@ -31,7 +29,7 @@ public class PlayerUpgrades : MonoBehaviour
 
     private void SplitShot()
     {
-
+        StartCoroutine(nameof(shooting.SplitShot));
     }
 
     private void Heal()
@@ -49,18 +47,18 @@ public class PlayerUpgrades : MonoBehaviour
         StartCoroutine(nameof(movement.SpeedBoost));
     }
 
-    private void Ricochet()
+    private void Piercing()
     {
-
+        StartCoroutine(nameof(shooting.Pierce));
     }
 
     private void RapidFire()
     {
-
+        StartCoroutine(nameof(shooting.Rapidfire));
     }
 
     private void Lifesteal()
     {
-
+        StartCoroutine(nameof(shooting.Lifesteal));
     }
 }

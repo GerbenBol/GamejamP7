@@ -9,13 +9,18 @@ public class BulletBehavior : MonoBehaviour
     private float _bulletSpeed = 1000;
     private float _bulletLifeTime = 5; // in seconds
 
-    public bool ricochet = false;
-    private int ricochets = 5;
+    public bool piercing;
+    private int pierce = 2;
+
+    public bool banzai;
 
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _rb.AddRelativeForce(Vector3.forward * _bulletSpeed);
+
+        if (banzai)
+            transform.localScale *= 2;
     }
 
     void Update()
@@ -25,15 +30,11 @@ public class BulletBehavior : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (ricochet && ricochets > 0)
-            Ricochet();
-        else
-            Destroy(gameObject);
-    }
+        if (banzai)
+            return;
 
-    private void Ricochet()
-    {
-        //bounce to nearest enemy
-        ricochets--;
+        if (!piercing || pierce < 0)
+            Destroy(gameObject);
+        else pierce--;
     }
 }

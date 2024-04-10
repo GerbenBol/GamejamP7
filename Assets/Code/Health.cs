@@ -53,7 +53,7 @@ public class Health : MonoBehaviour
 
     public void Lifesteal()
     {
-
+        health += 5;
     }
 
     public IEnumerator Heal()
@@ -67,9 +67,9 @@ public class Health : MonoBehaviour
     {
         health -= damage;
 
-        if (health <= 0 && CompareTag("Enemy"))
+        if (health <= 0 && !player)
             Destroy(gameObject);
-        else if (health <= 0 && CompareTag("Player"))
+        else if (health <= 0 && player)
             SceneManager.LoadScene("Lose Screen");
     }
 }
