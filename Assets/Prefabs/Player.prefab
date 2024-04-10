@@ -160,6 +160,8 @@ Transform:
   - {fileID: 4631758884927463689}
   - {fileID: 8225649633492848890}
   - {fileID: 1239760171782774663}
+  - {fileID: 9183156333609978408}
+  - {fileID: 6619452663322541950}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &3444759875105817228
@@ -238,6 +240,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Bullet: {fileID: 2143882247919354012, guid: 66e641f01b1f6884a84a1410418780d5, type: 3}
   _BulletSpawn: {fileID: 1139023946184884302}
+  _BanzaiBulletSpawn: {fileID: 0}
+  _SplitBulletSpawnLeft: {fileID: 0}
+  _SplitBulletSpawnRight: {fileID: 0}
+  _banzaiReady: 0
 --- !u!114 &6645323802954544580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,6 +256,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f36278d2f7b96040bfa5000fb7a33d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6273329868789145005
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6619452663322541950}
+  m_Layer: 3
+  m_Name: Bullet Spawn Point (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6619452663322541950
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6273329868789145005}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.074}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7028794788325213672}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8319838500232322592
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9183156333609978408}
+  m_Layer: 3
+  m_Name: Banzai Bullet Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9183156333609978408
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8319838500232322592}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 3.32}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7028794788325213672}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5174048107123508962
 PrefabInstance:
   m_ObjectHideFlags: 0

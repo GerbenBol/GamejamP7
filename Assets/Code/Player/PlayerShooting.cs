@@ -7,6 +7,8 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private GameObject _Bullet;
     [SerializeField] private GameObject _BulletSpawn;
     [SerializeField] private GameObject _BanzaiBulletSpawn;
+    [SerializeField] private GameObject _SplitBulletSpawnLeft;
+    [SerializeField] private GameObject _SplitBulletSpawnRight;
 
     private Quaternion _bulletRotation;
 
@@ -46,22 +48,21 @@ public class PlayerShooting : MonoBehaviour
                 bullet.GetComponent<BulletBehavior>().banzai = true;
                 _banzaiUse = false;
             }
-            else
+            else if (_SplitShot)
             {
                 GameObject[] bullets = new GameObject[3];
 
-                if (_SplitShot)
-                {
-                    bullets[1] = Instantiate(_Bullet, _BulletSpawn.transform.position, transform.rotation);
-                    bullets[2] = Instantiate(_Bullet, _BulletSpawn.transform.position, transform.rotation);
-                }
                 bullets[0] = Instantiate(_Bullet, _BulletSpawn.transform.position, transform.rotation);
+                bullets[1] = Instantiate(_Bullet, _SplitBulletSpawnLeft.transform.position, _SplitBulletSpawnLeft.transform.rotation);
+                bullets[2] = Instantiate(_Bullet, _SplitBulletSpawnRight.transform.position, _SplitBulletSpawnRight.transform.rotation);
 
-                if (bullets[1] != null)
-                    foreach (GameObject bullet in bullets)
-                        bullet.GetComponent<BulletBehavior>().piercing = _Pierce;
-                else
-                    bullets[0].GetComponent<BulletBehavior>().piercing = _Pierce;
+                foreach (GameObject bullet in bullets)
+                    bullet.GetComponent<BulletBehavior>().piercing = _Pierce;
+            }
+            else
+            {
+                GameObject bullet = Instantiate(_Bullet, _BulletSpawn.transform.position, transform.rotation);
+                bullet.GetComponent<BulletBehavior>().piercing = _Pierce;
             }
 
             if (_RapidFire)
