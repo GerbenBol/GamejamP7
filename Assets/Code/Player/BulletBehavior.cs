@@ -30,8 +30,12 @@ public class BulletBehavior : MonoBehaviour
 
     void Update()
     {
+        float lifeTime = _bulletLifeTime;
+
         if (banzai)
-            Destroy(gameObject, _bulletLifeTime * 2);
+            lifeTime *= 2;
+
+        Destroy(gameObject, lifeTime);
     }
 
     private void OnTriggerEnter(Collider other)

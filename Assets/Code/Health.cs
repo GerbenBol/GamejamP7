@@ -54,8 +54,8 @@ public class Health : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (GetComponent<Collider>().CompareTag("Bullet"))
-            TakeHit(Convert.ToInt32(GetComponent<Collider>().GetComponent<BulletBehavior>().damage));
+        if (other.CompareTag("Bullet"))
+            TakeHit(Convert.ToInt32(other.GetComponent<BulletBehavior>().damage));
     }
 
     public void Lifesteal()
