@@ -17,7 +17,7 @@ public class BulletBehavior : MonoBehaviour
     {
         Destroy(gameObject, _bulletLifeTime);
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
         Destroy(gameObject);
     }

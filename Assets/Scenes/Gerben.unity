@@ -1275,6 +1275,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4734682120923674893, guid: 8f677bf777cc31a4ba6d31ec2387682c, type: 3}
+      propertyPath: _Bullet
+      value: 
+      objectReference: {fileID: 2143882247919354012, guid: 66e641f01b1f6884a84a1410418780d5, type: 3}
+    - target: {fileID: 4734682120923674893, guid: 8f677bf777cc31a4ba6d31ec2387682c, type: 3}
+      propertyPath: _BulletSpawn
+      value: 
+      objectReference: {fileID: 1834493976}
     - target: {fileID: 5615231222447643895, guid: 8f677bf777cc31a4ba6d31ec2387682c, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1418,6 +1426,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1834493976 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1139023946184884302, guid: 8f677bf777cc31a4ba6d31ec2387682c, type: 3}
+  m_PrefabInstance: {fileID: 1316384232}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1835117254
 GameObject:
   m_ObjectHideFlags: 0
