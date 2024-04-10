@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private GameObject pickup;
 
+    private UIManager ui;
     private Transform player;
     private NavMeshAgent agent;
     private bool quitting = false;
@@ -21,6 +22,7 @@ public class Enemy : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.Find("Player").GetComponent<Transform>();
+        ui = GameObject.Find("UI").GetComponent<UIManager>();
     }
 
     private void Update()
@@ -32,10 +34,14 @@ public class Enemy : MonoBehaviour
     {
         int rand = Random.Range(0, 20);
 
-        if (!quitting && rand < upgrades.Count)
+        if (!quitting)
         {
-            GameObject gO = Instantiate(pickup);
-            gO.name = upgrades[rand];
+            if (rand < upgrades.Count)
+            {
+                GameObject gO = Instantiate(pickup, transform.position, Quaternion.identity);
+                gO.name = upgrades[rand];
+            }
+            ui.AddPoints(50);
         }
     }
 
