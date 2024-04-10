@@ -35,10 +35,10 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
-    //public IEnumerator SplitShot()
-    //{
+    public IEnumerator SplitShot()
+    {
 
-    //}
+    }
 
     public IEnumerator Rapidfire()
     {
