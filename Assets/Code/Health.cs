@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -66,7 +67,9 @@ public class Health : MonoBehaviour
     {
         health -= damage;
 
-        if (health <= 0)
+        if (health <= 0 && CompareTag("Enemy"))
             Destroy(gameObject);
+        else if (health <= 0 && CompareTag("Player"))
+            SceneManager.LoadScene("Lose Screen");
     }
 }
