@@ -12,6 +12,10 @@ public class PlayerShooting : MonoBehaviour
     private float _fireRate = 0.75f;    // Bullets per second 
     private float _spawnCoolDown;
 
+    private bool _Lifesteal;
+    private bool _Ricochet;
+    private bool _SplitShot;
+
     private bool _RapidFire;
     private float _RapidFireMultiplier;
 
@@ -27,7 +31,9 @@ public class PlayerShooting : MonoBehaviour
         // instantiates bullet with cooldown depending on fire rate.
         if (_spawnCoolDown <= 0)
         {
-            Instantiate(_Bullet, _BulletSpawn.transform.position, transform.rotation);
+            GameObject bullet = Instantiate(_Bullet, _BulletSpawn.transform.position, transform.rotation);
+            bullet.GetComponent<BulletBehavior>().ricochet = _Ricochet;
+
             if (_RapidFire)
                 _spawnCoolDown = 1 / (_fireRate * _RapidFireMultiplier);
             else
@@ -37,7 +43,21 @@ public class PlayerShooting : MonoBehaviour
 
     public IEnumerator SplitShot()
     {
+        _SplitShot = true;
+        yield return new WaitForSeconds(5);
+        _SplitShot = false;
+    }
 
+    public void BanzaiBill()
+    {
+
+    }
+
+    public IEnumerator Ricochet()
+    {
+        _Ricochet = true;
+        yield return new WaitForSeconds(5);
+        _Ricochet = false;
     }
 
     public IEnumerator Rapidfire()
@@ -45,5 +65,12 @@ public class PlayerShooting : MonoBehaviour
         _RapidFire = true;
         yield return new WaitForSeconds(5);
         _RapidFire = false;
+    }
+
+    public IEnumerator Lifesteal()
+    {
+        _Lifesteal = true;
+        yield return new WaitForSeconds(5);
+        _Lifesteal = false;
     }
 }

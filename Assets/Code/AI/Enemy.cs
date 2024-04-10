@@ -43,6 +43,7 @@ public class Enemy : MonoBehaviour
                 gO.name = upgrades[rand];
             }
             ui.AddPoints(50);
+            player.GetComponent<Health>().Lifesteal();
         }
     }
 
