@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,7 +20,7 @@ public class Health : MonoBehaviour
             player = true;
             health = 100;
         }
-        else health = 20;
+        else health = 30;
     }
 
     private void Update()
@@ -45,10 +46,16 @@ public class Health : MonoBehaviour
     {
         GameObject collider = collision.gameObject;
 
-        if (collider.CompareTag("Bullet") || collider.CompareTag("Enemy"))
+        if (collider.CompareTag("Enemy"))
             TakeHit();
         else if (collider.CompareTag("Player"))
             TakeHit(100);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (GetComponent<Collider>().CompareTag("Bullet"))
+            TakeHit(Convert.ToInt32(GetComponent<Collider>().GetComponent<BulletBehavior>().damage));
     }
 
     public void Lifesteal()

@@ -14,13 +14,18 @@ public class BulletBehavior : MonoBehaviour
 
     public bool banzai;
 
+    public float damage = 10;
+
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _rb.AddRelativeForce(Vector3.forward * _bulletSpeed);
 
         if (banzai)
+        {
+            damage *= 2;
             transform.localScale *= 4;
+        }
     }
 
     void Update()
