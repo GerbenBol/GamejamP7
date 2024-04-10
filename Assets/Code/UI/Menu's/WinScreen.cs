@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class WinScreen : MonoBehaviour
 {
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
     public void OnReplayButton()
     {
         SceneManager.LoadScene("Main Game");

@@ -23,8 +23,7 @@ public class GameScript : MonoBehaviour
         //Temp win condition
         if (Input.GetKeyDown(KeyCode.P) && Time.timeScale == 1)
         {
-            Cursor.lockState = CursorLockMode.None;
-            SceneManager.LoadScene(5);
+            SceneManager.LoadScene("Win Screen");
         }
     }
 }
