@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class LoseScreen : MonoBehaviour
 {
+    private void Start()
+    {
+            Cursor.lockState = CursorLockMode.None;
+    }
     public void OnRetryButton()
     {
         SceneManager.LoadScene("Main Game");
