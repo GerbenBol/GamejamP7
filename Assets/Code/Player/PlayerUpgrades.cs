@@ -16,7 +16,7 @@ public class PlayerUpgrades : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
-            BanzaiBill();
+            SplitShot();
     }
 
     public void AddUpgrade(string upgradeName)
@@ -35,12 +35,12 @@ public class PlayerUpgrades : MonoBehaviour
 
     private void SplitShot()
     {
-        StartCoroutine(nameof(shooting.SplitShot));
+        StartCoroutine(shooting.SplitShot());
     }
 
     private void Heal()
     {
-        StartCoroutine(nameof(health.Heal));
+        StartCoroutine(health.Heal());
     }
 
     private void BanzaiBill()
@@ -50,21 +50,21 @@ public class PlayerUpgrades : MonoBehaviour
 
     private void Speed()
     {
-        StartCoroutine(nameof(movement.SpeedBoost));
+        StartCoroutine(movement.SpeedBoost());
     }
 
     private void Piercing()
     {
-        StartCoroutine(nameof(shooting.Pierce));
+        StartCoroutine(shooting.Pierce());
     }
 
     private void RapidFire()
     {
-        StartCoroutine(nameof(shooting.Rapidfire));
+        StartCoroutine(shooting.Rapidfire());
     }
 
     private void Lifesteal()
     {
-        StartCoroutine(nameof(shooting.Lifesteal));
+        StartCoroutine(shooting.Lifesteal());
     }
 }

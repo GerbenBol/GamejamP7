@@ -48,8 +48,20 @@ public class PlayerShooting : MonoBehaviour
             }
             else
             {
-                GameObject bullet = Instantiate(_Bullet, _BulletSpawn.transform.position, transform.rotation);
-                bullet.GetComponent<BulletBehavior>().piercing = _Pierce;
+                GameObject[] bullets = new GameObject[3];
+
+                if (_SplitShot)
+                {
+                    bullets[1] = Instantiate(_Bullet, _BulletSpawn.transform.position, transform.rotation);
+                    bullets[2] = Instantiate(_Bullet, _BulletSpawn.transform.position, transform.rotation);
+                }
+                bullets[0] = Instantiate(_Bullet, _BulletSpawn.transform.position, transform.rotation);
+
+                if (bullets[1] != null)
+                    foreach (GameObject bullet in bullets)
+                        bullet.GetComponent<BulletBehavior>().piercing = _Pierce;
+                else
+                    bullets[0].GetComponent<BulletBehavior>().piercing = _Pierce;
             }
 
             if (_RapidFire)
