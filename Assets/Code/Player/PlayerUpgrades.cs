@@ -13,6 +13,12 @@ public class PlayerUpgrades : MonoBehaviour
         health = GetComponent<Health>();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+            BanzaiBill();
+    }
+
     public void AddUpgrade(string upgradeName)
     {
         switch (upgradeName)
@@ -39,7 +45,7 @@ public class PlayerUpgrades : MonoBehaviour
 
     private void BanzaiBill()
     {
-
+        shooting._banzaiReady = true;
     }
 
     private void Speed()

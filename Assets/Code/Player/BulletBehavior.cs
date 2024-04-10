@@ -20,17 +20,18 @@ public class BulletBehavior : MonoBehaviour
         _rb.AddRelativeForce(Vector3.forward * _bulletSpeed);
 
         if (banzai)
-            transform.localScale *= 2;
+            transform.localScale *= 4;
     }
 
     void Update()
     {
-        Destroy(gameObject, _bulletLifeTime);
+        if (banzai)
+            Destroy(gameObject, _bulletLifeTime * 2);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (banzai)
+        if (other.CompareTag("Pickup") || banzai)
             return;
 
         if (!piercing || pierce < 0)

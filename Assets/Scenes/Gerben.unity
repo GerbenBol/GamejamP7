@@ -261,6 +261,11 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: d60b683621b1201429044bc95aff4e1a, type: 2}
   m_BuildHeightMesh: 0
+--- !u!1 &531888934 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1139023946184884302, guid: 8f677bf777cc31a4ba6d31ec2387682c, type: 3}
+  m_PrefabInstance: {fileID: 1316384232}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &565198367
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,6 +1280,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4734682120923674893, guid: 8f677bf777cc31a4ba6d31ec2387682c, type: 3}
+      propertyPath: _BanzaiBulletSpawn
+      value: 
+      objectReference: {fileID: 531888934}
     - target: {fileID: 5615231222447643895, guid: 8f677bf777cc31a4ba6d31ec2387682c, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1322,8 +1331,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5615231222447643895, guid: 8f677bf777cc31a4ba6d31ec2387682c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1718331803}
   m_SourcePrefab: {fileID: 100100000, guid: 8f677bf777cc31a4ba6d31ec2387682c, type: 3}
+--- !u!1 &1718331796 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5615231222447643895, guid: 8f677bf777cc31a4ba6d31ec2387682c, type: 3}
+  m_PrefabInstance: {fileID: 1316384232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1718331803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718331796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ffb45e2b3263f4dabe6d8ddfb4360c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1835117254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,6 +1556,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 66539816024440852, guid: 4dbd0465e9362d34d8bc0fb112808c23, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 83.099976
+      objectReference: {fileID: 0}
+    - target: {fileID: 66539816024440852, guid: 4dbd0465e9362d34d8bc0fb112808c23, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -18.400024
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030977593421617757, guid: 4dbd0465e9362d34d8bc0fb112808c23, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -83.099976
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030977593421617757, guid: 4dbd0465e9362d34d8bc0fb112808c23, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -18.400024
+      objectReference: {fileID: 0}
     - target: {fileID: 4044200012237574685, guid: 4dbd0465e9362d34d8bc0fb112808c23, type: 3}
       propertyPath: m_Name
       value: UI

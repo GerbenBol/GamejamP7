@@ -13,10 +13,10 @@ public class PlayerShooting : MonoBehaviour
     private float _fireRate = 0.75f;    // Bullets per second 
     private float _spawnCoolDown;
 
-    private bool _Lifesteal;
     private bool _Pierce;
     private bool _SplitShot;
-    private bool _banzaiReady;
+    private bool _Lifesteal;
+    public bool _banzaiReady;
     private bool _banzaiUse;
 
     private bool _RapidFire;
@@ -43,6 +43,8 @@ public class PlayerShooting : MonoBehaviour
             if (_banzaiUse)
             {
                 GameObject bullet = Instantiate(_Bullet, _BanzaiBulletSpawn.transform.position, transform.rotation);
+                bullet.GetComponent<BulletBehavior>().banzai = true;
+                _banzaiUse = false;
             }
             else
             {
@@ -64,11 +66,6 @@ public class PlayerShooting : MonoBehaviour
         _SplitShot = false;
     }
 
-    public void BanzaiBill()
-    {
-        _banzaiReady = true;
-    }
-
     public IEnumerator Pierce()
     {
         _Pierce = true;
@@ -88,5 +85,11 @@ public class PlayerShooting : MonoBehaviour
         _Lifesteal = true;
         yield return new WaitForSeconds(5);
         _Lifesteal = false;
+    }
+
+    public void Heal()
+    {
+        if (_Lifesteal)
+            GetComponent<Health>().Lifesteal();
     }
 }
