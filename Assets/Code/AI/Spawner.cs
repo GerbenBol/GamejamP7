@@ -37,5 +37,6 @@ public class Spawner : MonoBehaviour
     {
         int rand = Random.Range(0, 2);
         Instantiate(enemy, spawners[rand]);
+        Instantiate(enemy, spawners[rand]);
     }
 }
