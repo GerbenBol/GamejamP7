@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Camera _mainCam;
     private Rigidbody _rigidBody;
+    private float _originalSpeed;
 
     [SerializeField] private float _MovementSpeed;  // 20000
     [SerializeField] private int _Sensitivity;      // 5
@@ -14,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _mainCam = Camera.main;
         _rigidBody = GetComponent<Rigidbody>();
+        _originalSpeed = _MovementSpeed;
 
         //locks the cursor to the middle of the screen
         Cursor.lockState = CursorLockMode.Locked;
@@ -27,6 +29,13 @@ public class PlayerMovement : MonoBehaviour
         //Makes the player move with [W,A,S,D]
         _rigidBody.AddForce(transform.right * (Input.GetAxis("Horizontal") * _MovementSpeed * Time.deltaTime));
         _rigidBody.AddForce(transform.forward * (Input.GetAxis("Vertical") * _MovementSpeed * Time.deltaTime));
+    }
+
+    public IEnumerator SpeedBoost()
+    {
+        _MovementSpeed = 25000;
+        yield return new WaitForSeconds(5);
+        _MovementSpeed = _originalSpeed;
     }
 
     private void LookAround()

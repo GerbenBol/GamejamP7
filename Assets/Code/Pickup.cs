@@ -6,7 +6,7 @@ public class Pickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-           Debug.Log("pickup " + name);
+            other.GetComponent<PlayerUpgrades>().AddUpgrade(name);
             Destroy(gameObject);
         }
     }
