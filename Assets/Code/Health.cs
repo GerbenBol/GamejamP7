@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
-    private int health;
+    public int health;
     private bool player = false;
     private readonly float originalHealCD = 2;
     private float healCD;
