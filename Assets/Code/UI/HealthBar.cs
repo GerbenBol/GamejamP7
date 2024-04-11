@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     [SerializeField] Image _Bar;
-    [SerializeField] GameObject _Player;
+    GameObject _Player;
     private int _playerHealth;
     private Health health;
     void Start()
     {
-        //_Player.GetComponent<Health>();
+        _Player = GameObject.Find("Player");
         health = _Player.GetComponent<Health>();
     }
 

@@ -29,6 +29,10 @@ public class PlayerMovement : MonoBehaviour
         //Makes the player move with [W,A,S,D]
         _rigidBody.AddForce(transform.right * (Input.GetAxis("Horizontal") * _MovementSpeed * Time.deltaTime));
         _rigidBody.AddForce(transform.forward * (Input.GetAxis("Vertical") * _MovementSpeed * Time.deltaTime));
+
+        //Fixes a bug where the enemies phase through the player when standing still
+        if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
+            transform.Rotate(new Vector3(0, 0.0001f, 0));
     }
 
     public IEnumerator SpeedBoost()
