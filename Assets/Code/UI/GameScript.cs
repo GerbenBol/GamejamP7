@@ -9,7 +9,9 @@ public class GameScript : MonoBehaviour
 
     private void Start()
     {
-        Time.timeScale = 1.0f;
+        UIManager.timer = 0;
+        UIManager.points = 0;
+        Time.timeScale = 0f;
     }
     void Update()
     {
