@@ -21,6 +21,7 @@ public class PlayerShooting : MonoBehaviour
     private bool _Lifesteal;
     public bool _banzaiReady;
     private bool _banzaiUse;
+    private IconOnOff icons;
 
     private bool _RapidFire;
     private float _RapidFireMultiplier = 3;
@@ -28,6 +29,7 @@ public class PlayerShooting : MonoBehaviour
     void Start()
     {
         _spawnCoolDown = 1 / _fireRate;
+        icons = GameObject.Find("Items").GetComponent<IconOnOff>();
     }
 
     void Update()
@@ -48,6 +50,7 @@ public class PlayerShooting : MonoBehaviour
                 GameObject bullet = Instantiate(_Bullet, _BanzaiBulletSpawn.transform.position, transform.rotation);
                 bullet.GetComponent<BulletBehavior>().banzai = true;
                 _banzaiUse = false;
+                icons.Banzai(false);
             }
             else if (_SplitShot)
             {
@@ -76,29 +79,37 @@ public class PlayerShooting : MonoBehaviour
     public IEnumerator SplitShot()
     {
         _SplitShot = true;
+        icons.SplitShot(true);
         yield return new WaitForSeconds(5);
         _SplitShot = false;
+        icons.SplitShot(false);
     }
 
     public IEnumerator Pierce()
     {
         _Pierce = true;
+        icons.Piercing(true);
         yield return new WaitForSeconds(5);
         _Pierce = false;
+        icons.Piercing(false);
     }
 
     public IEnumerator Rapidfire()
     {
         _RapidFire = true;
+        icons.Rapidfire(true);
         yield return new WaitForSeconds(5);
         _RapidFire = false;
+        icons.Rapidfire(false);
     }
 
     public IEnumerator Lifesteal()
     {
         _Lifesteal = true;
+        icons.Lifesteal(true);
         yield return new WaitForSeconds(5);
         _Lifesteal = false;
+        icons.Lifesteal(false);
     }
 
     public void Heal()

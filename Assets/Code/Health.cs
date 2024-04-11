@@ -10,9 +10,11 @@ public class Health : MonoBehaviour
     private readonly float originalHealCD = 2;
     private float healCD;
     private float healTimer = .0f;
+    private IconOnOff icons;
 
     private void Start()
     {
+        icons = GameObject.Find("Items").GetComponent<IconOnOff>();
         healCD = originalHealCD;
 
         if (CompareTag("Player"))
@@ -66,8 +68,10 @@ public class Health : MonoBehaviour
     public IEnumerator Heal()
     {
         healCD = .2f;
+        icons.Heal(true);
         yield return new WaitForSeconds(5);
         healCD = originalHealCD;
+        icons.Heal(false);
     }
 
     private void TakeHit(int damage = 10)
