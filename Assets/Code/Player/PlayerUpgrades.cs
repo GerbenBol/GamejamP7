@@ -15,12 +15,6 @@ public class PlayerUpgrades : MonoBehaviour
         icons = GameObject.Find("Items").GetComponent<IconOnOff>();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-            Lifesteal();
-    }
-
     public void AddUpgrade(string upgradeName)
     {
         switch (upgradeName)
