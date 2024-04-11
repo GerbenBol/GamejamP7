@@ -7,8 +7,9 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private GameObject _Bullet;
     [SerializeField] private GameObject _BulletSpawn;
     [SerializeField] private GameObject _BanzaiBulletSpawn;
-    [SerializeField] private GameObject _SplitBulletSpawnLeft;
-    [SerializeField] private GameObject _SplitBulletSpawnRight;
+    [SerializeField] private Transform _SplitBulletSpawnMiddle;
+    [SerializeField] private Transform _SplitBulletSpawnLeft;
+    [SerializeField] private Transform _SplitBulletSpawnRight;
 
     private Quaternion _bulletRotation;
 
@@ -52,9 +53,9 @@ public class PlayerShooting : MonoBehaviour
             {
                 GameObject[] bullets = new GameObject[3];
 
-                bullets[0] = Instantiate(_Bullet, _BulletSpawn.transform.position, transform.rotation);
-                bullets[1] = Instantiate(_Bullet, _SplitBulletSpawnLeft.transform.position, _SplitBulletSpawnLeft.transform.rotation);
-                bullets[2] = Instantiate(_Bullet, _SplitBulletSpawnRight.transform.position, _SplitBulletSpawnRight.transform.rotation);
+                bullets[0] = Instantiate(_Bullet, _SplitBulletSpawnMiddle.position, _SplitBulletSpawnMiddle.rotation);
+                bullets[1] = Instantiate(_Bullet, _SplitBulletSpawnLeft.position, _SplitBulletSpawnLeft.rotation);
+                bullets[2] = Instantiate(_Bullet, _SplitBulletSpawnRight.position, _SplitBulletSpawnRight.rotation);
 
                 foreach (GameObject bullet in bullets)
                     bullet.GetComponent<BulletBehavior>().piercing = _Pierce;
