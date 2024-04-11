@@ -7,12 +7,14 @@ public class PlayerMovement : MonoBehaviour
     private Camera _mainCam;
     private Rigidbody _rigidBody;
     private float _originalSpeed;
+    private IconOnOff icons;
 
     [SerializeField] private float _MovementSpeed;  // 20000
     [SerializeField] private int _Sensitivity;      // 5
 
     void Start()
     {
+        icons = GameObject.Find("Items").GetComponent<IconOnOff>();
         _mainCam = Camera.main;
         _rigidBody = GetComponent<Rigidbody>();
         _originalSpeed = _MovementSpeed;
@@ -38,8 +40,10 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator SpeedBoost()
     {
         _MovementSpeed = 25000;
+        icons.Speed(true);
         yield return new WaitForSeconds(5);
         _MovementSpeed = _originalSpeed;
+        icons.Speed(false);
     }
 
     private void LookAround()

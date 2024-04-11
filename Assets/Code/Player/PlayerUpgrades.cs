@@ -5,18 +5,20 @@ public class PlayerUpgrades : MonoBehaviour
     private PlayerShooting shooting;
     private PlayerMovement movement;
     private Health health;
+    private IconOnOff icons;
 
     private void Start()
     {
         shooting = GetComponent<PlayerShooting>();
         movement = GetComponent<PlayerMovement>();
         health = GetComponent<Health>();
+        icons = GameObject.Find("Items").GetComponent<IconOnOff>();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
-            SplitShot();
+            Lifesteal();
     }
 
     public void AddUpgrade(string upgradeName)
@@ -47,6 +49,7 @@ public class PlayerUpgrades : MonoBehaviour
 
     private void BanzaiBill()
     {
+        icons.Banzai(true);
         shooting._banzaiReady = true;
     }
 
