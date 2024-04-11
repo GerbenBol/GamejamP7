@@ -23,7 +23,7 @@ public class PlayerShooting : MonoBehaviour
     private bool _banzaiUse;
 
     private bool _RapidFire;
-    private float _RapidFireMultiplier;
+    private float _RapidFireMultiplier = 3;
 
     void Start()
     {

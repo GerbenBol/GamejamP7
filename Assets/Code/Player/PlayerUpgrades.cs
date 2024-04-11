@@ -35,11 +35,13 @@ public class PlayerUpgrades : MonoBehaviour
 
     private void SplitShot()
     {
+        StopCoroutine(shooting.SplitShot());
         StartCoroutine(shooting.SplitShot());
     }
 
     private void Heal()
     {
+        StopCoroutine(health.Heal());
         StartCoroutine(health.Heal());
     }
 
@@ -50,21 +52,25 @@ public class PlayerUpgrades : MonoBehaviour
 
     private void Speed()
     {
+        StopCoroutine(movement.SpeedBoost());
         StartCoroutine(movement.SpeedBoost());
     }
 
     private void Piercing()
     {
+        StopCoroutine(shooting.Pierce());
         StartCoroutine(shooting.Pierce());
     }
 
     private void RapidFire()
     {
+        StopCoroutine(shooting.Rapidfire());
         StartCoroutine(shooting.Rapidfire());
     }
 
     private void Lifesteal()
     {
+        StopCoroutine(shooting.Lifesteal());
         StartCoroutine(shooting.Lifesteal());
     }
 }
