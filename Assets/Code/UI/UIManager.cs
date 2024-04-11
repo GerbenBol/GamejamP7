@@ -3,18 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI timerTMP;
-    [SerializeField] private TextMeshProUGUI pointsTMP;
+    [SerializeField] TextMeshProUGUI timerTMP;
+    [SerializeField] TextMeshProUGUI pointsTMP;
 
-    private float timer = .0f;
-    private int points = 0;
+    public static float timer = .0f;
+    public static int points = 0;
 
     private void Update()
     {
-        timer += Time.deltaTime;
+        if (SceneManager.GetActiveScene().name == "Main Game")
+            timer += Time.deltaTime;
+
         timerTMP.text = FormatTime();
     }
 
@@ -24,7 +27,7 @@ public class UIManager : MonoBehaviour
         pointsTMP.text = points.ToString();
     }
 
-    private string FormatTime()
+    public static string FormatTime()
     {
         // Geef geformatteerde tijd terug
         TimeSpan ts = TimeSpan.FromSeconds(Convert.ToInt32(timer));
