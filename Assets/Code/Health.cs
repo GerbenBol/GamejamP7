@@ -11,7 +11,8 @@ public class Health : MonoBehaviour
     private float healCD;
     private float healTimer = .0f;
     private IconOnOff icons;
-    //[SerializeField] private GameObject _HealMod;
+    [SerializeField] private GameObject _HealMod;
+    [SerializeField] private AudioSource hitSFX;
 
     private void Start()
     {
@@ -70,11 +71,11 @@ public class Health : MonoBehaviour
     {
         healCD = .2f;
         icons.Heal(true);
-        //_HealMod.SetActive(true);
+        _HealMod.SetActive(true);
         yield return new WaitForSeconds(5);
         healCD = originalHealCD;
         icons.Heal(false);
-        //_HealMod.SetActive(false);
+        _HealMod.SetActive(false);
     }
 
     private void TakeHit(int damage = 10)
@@ -85,5 +86,7 @@ public class Health : MonoBehaviour
             Destroy(gameObject);
         else if (health <= 0 && player)
             SceneManager.LoadScene("Lose Screen");
+        else if (player)
+            hitSFX.Play();
     }
 }

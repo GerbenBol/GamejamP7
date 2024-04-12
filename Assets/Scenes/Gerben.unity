@@ -1275,6 +1275,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4734682120923674893, guid: 8f677bf777cc31a4ba6d31ec2387682c, type: 3}
+      propertyPath: _ShootSFX
+      value: 
+      objectReference: {fileID: 2027285329}
     - target: {fileID: 5615231222447643895, guid: 8f677bf777cc31a4ba6d31ec2387682c, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1462,6 +1466,11 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 9d74df2bed682bf40a2d6eb5024bd55c, type: 2}
   m_BuildHeightMesh: 0
+--- !u!82 &2027285329 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6376490322441416888, guid: 8f677bf777cc31a4ba6d31ec2387682c, type: 3}
+  m_PrefabInstance: {fileID: 1316384232}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3286822449820018004
 PrefabInstance:
   m_ObjectHideFlags: 0
