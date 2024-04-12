@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private float _originalSpeed;
     private IconOnOff icons;
     [SerializeField] private GameObject _SpeedMod;
+    private PlayerShooting _Shooting;
 
     [SerializeField] private float _MovementSpeed;  // 20000
     [SerializeField] private int _Sensitivity;      // 5
@@ -19,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
         _mainCam = Camera.main;
         _rigidBody = GetComponent<Rigidbody>();
         _originalSpeed = _MovementSpeed;
+        _Shooting = GetComponent<PlayerShooting>();
 
         //locks the cursor to the middle of the screen
         Cursor.lockState = CursorLockMode.Locked;
@@ -40,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
     public IEnumerator SpeedBoost()
     {
+        _Shooting._Speed = true;
         _MovementSpeed = 25000;
         icons.Speed(true);
         _SpeedMod.SetActive(true);
@@ -47,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
         _MovementSpeed = _originalSpeed;
         icons.Speed(false);
         _SpeedMod.SetActive(false);
+        _Shooting._Speed = false;
     }
 
     private void LookAround()

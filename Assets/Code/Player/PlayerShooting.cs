@@ -20,7 +20,6 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private GameObject _LifeStealMod;
     [SerializeField] private GameObject _PiercingMod;
 
-
     private Quaternion _bulletRotation;
 
     private float _fireRate = 0.75f;    // Bullets per second 
@@ -29,6 +28,7 @@ public class PlayerShooting : MonoBehaviour
     private bool _Pierce;
     private bool _SplitShot;
     private bool _Lifesteal;
+    public bool _Speed;
     public bool _banzaiReady;
     private bool _banzaiUse;
     private IconOnOff icons;
@@ -85,10 +85,11 @@ public class PlayerShooting : MonoBehaviour
                 GameObject bullet = Instantiate(_Bullet, _PierceSpawn.transform.position, transform.rotation);
                 bullet.GetComponent<BulletBehavior>().piercing = _Pierce;
             }
-            else if (_RapidFire)
+            else if (_Speed)
             {
-                GameObject bullet = Instantiate(_Bullet, _RapidFireSpawn.transform.position, transform.rotation);
+                GameObject bullet = Instantiate(_Bullet, _SpeedSpawn.transform.position, transform.rotation);
                 bullet.GetComponent<BulletBehavior>().piercing = _Pierce;
+
             }
             else
             {
