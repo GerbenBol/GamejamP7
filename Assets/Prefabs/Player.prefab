@@ -492,6 +492,7 @@ MonoBehaviour:
   _SplitShotMod: {fileID: 4510100246422268554}
   _LifeStealMod: {fileID: 6767387843319875205}
   _PiercingMod: {fileID: 8609387930221413252}
+  _ShootSFX: {fileID: 6376490322441416888}
   _Speed: 0
   _banzaiReady: 0
 --- !u!114 &6645323802954544580
