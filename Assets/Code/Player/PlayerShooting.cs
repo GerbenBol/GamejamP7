@@ -9,6 +9,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private GameObject _BanzaiBulletSpawn;
     [SerializeField] private GameObject _RapidFireSpawn;
     [SerializeField] private GameObject _SpeedSpawn;
+    [SerializeField] private GameObject _PierceSpawn;
     [SerializeField] private Transform _SplitBulletSpawnMiddle;
     [SerializeField] private Transform _SplitBulletSpawnLeft;
     [SerializeField] private Transform _SplitBulletSpawnRight;
@@ -16,8 +17,8 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private GameObject _BanzaiBulletMod;
     [SerializeField] private GameObject _RapidFireMod;
     [SerializeField] private GameObject _SplitShotMod;
-    //[SerializeField] private GameObject _LifeStealMod;
-    //[SerializeField] private GameObject _PiercingMod;
+    [SerializeField] private GameObject _LifeStealMod;
+    [SerializeField] private GameObject _PiercingMod;
 
 
     private Quaternion _bulletRotation;
@@ -33,7 +34,7 @@ public class PlayerShooting : MonoBehaviour
     private IconOnOff icons;
 
     private bool _RapidFire;
-    private float _RapidFireMultiplier = 3;
+    private float _RapidFireMultiplier = 5;
 
     void Start()
     {
@@ -74,6 +75,21 @@ public class PlayerShooting : MonoBehaviour
                 foreach (GameObject bullet in bullets)
                     bullet.GetComponent<BulletBehavior>().piercing = _Pierce;
             }
+            else if (_RapidFire)
+            {
+                GameObject bullet = Instantiate(_Bullet, _RapidFireSpawn.transform.position, transform.rotation);
+                bullet.GetComponent<BulletBehavior>().piercing = _Pierce;
+            }
+            else if (_Pierce)
+            {
+                GameObject bullet = Instantiate(_Bullet, _PierceSpawn.transform.position, transform.rotation);
+                bullet.GetComponent<BulletBehavior>().piercing = _Pierce;
+            }
+            else if (_RapidFire)
+            {
+                GameObject bullet = Instantiate(_Bullet, _RapidFireSpawn.transform.position, transform.rotation);
+                bullet.GetComponent<BulletBehavior>().piercing = _Pierce;
+            }
             else
             {
                 GameObject bullet = Instantiate(_Bullet, _BulletSpawn.transform.position, transform.rotation);
@@ -102,11 +118,11 @@ public class PlayerShooting : MonoBehaviour
     {
         _Pierce = true;
         icons.Piercing(true);
-        //_PiercingMod.SetActive(true);
+        _PiercingMod.SetActive(true);
         yield return new WaitForSeconds(5);
         _Pierce = false;
         icons.Piercing(false);
-        //_PiercingMod.SetActive(false);
+        _PiercingMod.SetActive(false);
     }
 
     public IEnumerator Rapidfire()
@@ -124,11 +140,11 @@ public class PlayerShooting : MonoBehaviour
     {
         _Lifesteal = true;
         icons.Lifesteal(true);
-       //_LifeStealMod.SetActive(true);
+       _LifeStealMod.SetActive(true);
         yield return new WaitForSeconds(5);
         _Lifesteal = false;
         icons.Lifesteal(false);
-        //_LifeStealMod.SetActive(false);
+        _LifeStealMod.SetActive(false);
     }
 
     public void Heal()
