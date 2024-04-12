@@ -20,6 +20,8 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private GameObject _LifeStealMod;
     [SerializeField] private GameObject _PiercingMod;
 
+    [SerializeField] private AudioSource _ShootSFX;
+
     private Quaternion _bulletRotation;
 
     private float _fireRate = 0.75f;    // Bullets per second 
@@ -96,6 +98,8 @@ public class PlayerShooting : MonoBehaviour
                 GameObject bullet = Instantiate(_Bullet, _BulletSpawn.transform.position, transform.rotation);
                 bullet.GetComponent<BulletBehavior>().piercing = _Pierce;
             }
+
+            _ShootSFX.Play();
 
             if (_RapidFire)
                 _spawnCoolDown = 1 / (_fireRate * _RapidFireMultiplier);
