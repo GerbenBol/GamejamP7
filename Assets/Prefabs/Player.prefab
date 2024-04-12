@@ -487,6 +487,8 @@ MonoBehaviour:
   _BanzaiBulletMod: {fileID: 7965630539213769061}
   _RapidFireMod: {fileID: 3515424706576879372}
   _SplitShotMod: {fileID: 4510100246422268554}
+  _LifeStealMod: {fileID: 0}
+  _PiercingMod: {fileID: 0}
   _banzaiReady: 0
 --- !u!114 &6645323802954544580
 MonoBehaviour:
@@ -501,6 +503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  _HealMod: {fileID: 0}
 --- !u!114 &7459568102501814164
 MonoBehaviour:
   m_ObjectHideFlags: 0
