@@ -12,6 +12,7 @@ public class Health : MonoBehaviour
     private float healTimer = .0f;
     private IconOnOff icons;
     [SerializeField] private GameObject _HealMod;
+    [SerializeField] private AudioSource hitSFX;
 
     private void Start()
     {
@@ -85,5 +86,7 @@ public class Health : MonoBehaviour
             Destroy(gameObject);
         else if (health <= 0 && player)
             SceneManager.LoadScene("Lose Screen");
+        else if (player)
+            hitSFX.Play();
     }
 }
