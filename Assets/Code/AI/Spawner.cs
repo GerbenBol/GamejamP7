@@ -9,6 +9,8 @@ public class Spawner : MonoBehaviour
     private float maxTimer = 2.5f;
     private float timer = .0f;
     private float totalTimer = .0f;
+    private int spawnAmount = 2;
+    private bool maxReached = false;
 
     private void Awake()
     {
@@ -25,18 +27,29 @@ public class Spawner : MonoBehaviour
         }
         else timer += Time.deltaTime;
 
-        if (totalTimer > 60)
+        if (!maxReached)
         {
-            maxTimer -= .5f;
-            totalTimer = .0f;
+            if (totalTimer > 60)
+            {
+                maxTimer -= .5f;
+                totalTimer = .0f;
+            }
+            else totalTimer += Time.deltaTime;
+
+            if (maxTimer <= .0f)
+            {
+                maxTimer = .3f;
+                spawnAmount = 1;
+                maxReached = true;
+            }
         }
-        else totalTimer += Time.deltaTime;
     }
 
     private void Spawn()
     {
         int rand = Random.Range(0, 2);
-        Instantiate(enemy, spawners[rand]);
-        Instantiate(enemy, spawners[rand]);
+
+        for (int i = 0; i < spawnAmount; i++)
+            Instantiate(enemy, spawners[rand]);
     }
 }
