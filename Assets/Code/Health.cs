@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
     private float healCD;
     private float healTimer = .0f;
     private IconOnOff icons;
+    //[SerializeField] private GameObject _HealMod;
 
     private void Start()
     {
@@ -69,9 +70,11 @@ public class Health : MonoBehaviour
     {
         healCD = .2f;
         icons.Heal(true);
+        //_HealMod.SetActive(true);
         yield return new WaitForSeconds(5);
         healCD = originalHealCD;
         icons.Heal(false);
+        //_HealMod.SetActive(false);
     }
 
     private void TakeHit(int damage = 10)
