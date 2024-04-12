@@ -5,7 +5,7 @@ public class Pickup : MonoBehaviour
 {
     [SerializeField] private Transform[] lights;
     [SerializeField] private float minY, maxY;
-    [SerializeField] private float modifier = .02f, cooldown = .005f;
+    [SerializeField] private float modifier = .02f, cooldown = .01f;
     private bool goingDown = false;
 
     private void Start()
