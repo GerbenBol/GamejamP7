@@ -7,9 +7,18 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private GameObject _Bullet;
     [SerializeField] private GameObject _BulletSpawn;
     [SerializeField] private GameObject _BanzaiBulletSpawn;
+    [SerializeField] private GameObject _RapidFireSpawn;
+    [SerializeField] private GameObject _SpeedSpawn;
     [SerializeField] private Transform _SplitBulletSpawnMiddle;
     [SerializeField] private Transform _SplitBulletSpawnLeft;
     [SerializeField] private Transform _SplitBulletSpawnRight;
+
+    [SerializeField] private GameObject _BanzaiBulletMod;
+    [SerializeField] private GameObject _RapidFireMod;
+    [SerializeField] private GameObject _SplitShotMod;
+    //[SerializeField] private GameObject _LifeStealMod;
+    //[SerializeField] private GameObject _PiercingMod;
+
 
     private Quaternion _bulletRotation;
 
@@ -40,6 +49,7 @@ public class PlayerShooting : MonoBehaviour
         {
             _banzaiReady = false;
             _banzaiUse = true;
+            _BanzaiBulletMod.SetActive(true);
         }
 
         // instantiates bullet with cooldown depending on fire rate.
@@ -51,6 +61,7 @@ public class PlayerShooting : MonoBehaviour
                 bullet.GetComponent<BulletBehavior>().banzai = true;
                 _banzaiUse = false;
                 icons.Banzai(false);
+                _BanzaiBulletMod.SetActive(false);
             }
             else if (_SplitShot)
             {
@@ -80,36 +91,44 @@ public class PlayerShooting : MonoBehaviour
     {
         _SplitShot = true;
         icons.SplitShot(true);
+        _SplitShotMod.SetActive(true);
         yield return new WaitForSeconds(5);
         _SplitShot = false;
         icons.SplitShot(false);
+        _SplitShotMod.SetActive(false);
     }
 
     public IEnumerator Pierce()
     {
         _Pierce = true;
         icons.Piercing(true);
+        //_PiercingMod.SetActive(true);
         yield return new WaitForSeconds(5);
         _Pierce = false;
         icons.Piercing(false);
+        //_PiercingMod.SetActive(false);
     }
 
     public IEnumerator Rapidfire()
     {
         _RapidFire = true;
         icons.Rapidfire(true);
+        _RapidFireMod.SetActive(true);
         yield return new WaitForSeconds(5);
         _RapidFire = false;
         icons.Rapidfire(false);
+        _RapidFireMod.SetActive(false);
     }
 
     public IEnumerator Lifesteal()
     {
         _Lifesteal = true;
         icons.Lifesteal(true);
+       //_LifeStealMod.SetActive(true);
         yield return new WaitForSeconds(5);
         _Lifesteal = false;
         icons.Lifesteal(false);
+        //_LifeStealMod.SetActive(false);
     }
 
     public void Heal()

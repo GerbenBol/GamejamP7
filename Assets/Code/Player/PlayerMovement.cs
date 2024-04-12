@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody _rigidBody;
     private float _originalSpeed;
     private IconOnOff icons;
+    [SerializeField] private GameObject _SpeedMod;
 
     [SerializeField] private float _MovementSpeed;  // 20000
     [SerializeField] private int _Sensitivity;      // 5
@@ -41,9 +42,11 @@ public class PlayerMovement : MonoBehaviour
     {
         _MovementSpeed = 25000;
         icons.Speed(true);
+        _SpeedMod.SetActive(true);
         yield return new WaitForSeconds(5);
         _MovementSpeed = _originalSpeed;
         icons.Speed(false);
+        _SpeedMod.SetActive(false);
     }
 
     private void LookAround()
