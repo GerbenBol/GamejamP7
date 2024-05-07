@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SpriteBillboard : MonoBehaviour
+public class PickupSprite : MonoBehaviour
 {
     void Update()
     {
