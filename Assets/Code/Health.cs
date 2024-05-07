@@ -82,10 +82,13 @@ public class Health : MonoBehaviour
     {
         health -= damage;
 
-        if (health <= 0 && !player)
-            Destroy(gameObject);
-        else if (health <= 0 && player)
+        if (health <= 0 && player)
+        {
+            PauseMenu.SwitchingScenes = true;
             SceneManager.LoadScene("Lose Screen");
+        }
+        else if (health <= 0 && !player)
+            Destroy(gameObject);
         else if (player)
             hitSFX.Play();
     }
