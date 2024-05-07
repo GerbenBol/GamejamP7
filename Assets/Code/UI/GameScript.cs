@@ -13,6 +13,7 @@ public class GameScript : MonoBehaviour
         UIManager.points = 0;
         Time.timeScale = 0f;
     }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -20,12 +21,6 @@ public class GameScript : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0;
             canvas.SetActive(true);
-        }
-
-        //Temp win condition
-        if (Input.GetKeyDown(KeyCode.P) && Time.timeScale == 1)
-        {
-            SceneManager.LoadScene("Win Screen");
         }
     }
 }

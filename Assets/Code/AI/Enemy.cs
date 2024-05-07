@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
     {
         int rand = Random.Range(0, 20);
 
-        if (!quitting)
+        if (!quitting && !PauseMenu.SwitchingScenes)
         {
             if (rand < upgrades.Count)
             {
