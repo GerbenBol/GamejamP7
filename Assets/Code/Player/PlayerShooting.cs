@@ -24,7 +24,7 @@ public class PlayerShooting : MonoBehaviour
 
     private Quaternion _bulletRotation;
 
-    private float _fireRate = 0.75f;    // Bullets per second 
+    private float _fireRate = 4f;    // Bullets per second 
     private float _spawnCoolDown;
 
     private bool _Pierce;
@@ -48,7 +48,7 @@ public class PlayerShooting : MonoBehaviour
     {
         _spawnCoolDown -= Time.deltaTime;
 
-        if (Input.GetMouseButtonDown(0) && _banzaiReady)
+        if (Input.GetMouseButtonDown(1) && _banzaiReady)
         {
             _banzaiReady = false;
             _banzaiUse = true;
@@ -56,7 +56,7 @@ public class PlayerShooting : MonoBehaviour
         }
 
         // instantiates bullet with cooldown depending on fire rate.
-        if (_spawnCoolDown <= 0)
+        if (_spawnCoolDown <= 0 && Input.GetMouseButtonDown(0))
         {
             if (_banzaiUse)
             {
@@ -77,33 +77,25 @@ public class PlayerShooting : MonoBehaviour
                 foreach (GameObject bullet in bullets)
                     bullet.GetComponent<BulletBehavior>().piercing = _Pierce;
             }
-            else if (_RapidFire)
-            {
-                GameObject bullet = Instantiate(_Bullet, _RapidFireSpawn.transform.position, transform.rotation);
-                bullet.GetComponent<BulletBehavior>().piercing = _Pierce;
-            }
-            else if (_Pierce)
-            {
-                GameObject bullet = Instantiate(_Bullet, _PierceSpawn.transform.position, transform.rotation);
-                bullet.GetComponent<BulletBehavior>().piercing = _Pierce;
-            }
-            else if (_Speed)
-            {
-                GameObject bullet = Instantiate(_Bullet, _SpeedSpawn.transform.position, transform.rotation);
-                bullet.GetComponent<BulletBehavior>().piercing = _Pierce;
-
-            }
             else
             {
-                GameObject bullet = Instantiate(_Bullet, _BulletSpawn.transform.position, transform.rotation);
+                GameObject bullet;
+
+                if (_RapidFire)
+                    bullet = Instantiate(_Bullet, _RapidFireSpawn.transform.position, transform.rotation);
+                else if (_Pierce)
+                    bullet = Instantiate(_Bullet, _PierceSpawn.transform.position, transform.rotation);
+                else if (_Speed)
+                    bullet = Instantiate(_Bullet, _SpeedSpawn.transform.position, transform.rotation);
+                else
+                    bullet = Instantiate(_Bullet, _BulletSpawn.transform.position, transform.rotation);
+
                 bullet.GetComponent<BulletBehavior>().piercing = _Pierce;
             }
 
             _ShootSFX.Play();
 
-            if (_RapidFire)
-                _spawnCoolDown = 1 / (_fireRate * _RapidFireMultiplier);
-            else
+            if (!_RapidFire)
                 _spawnCoolDown = 1 / _fireRate;
         }
     }
